@@ -1,7 +1,6 @@
 package org.ECSDigital.EmmanuelOgiji;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +9,6 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Properties;
-import java.util.Scanner;
 
 
 public class Competitions extends HttpServlet {
@@ -48,8 +46,11 @@ public class Competitions extends HttpServlet {
         output.println("</head>");
         output.println("<body>");
         for (int i=0; i<CompetitionList.length(); i++) {
-            output.println(CompetitionList.getJSONObject(i).getString("name"));
-            output.println("<br>");
+            String tier = CompetitionList.getJSONObject(i).getString("plan");
+            if(tier.equals("TIER_ONE")) {
+                output.println(CompetitionList.getJSONObject(i).getString("name"));
+                output.println("<br>");
+            }
         }
         output.println("</body>");
         output.println("</html>");
