@@ -1,9 +1,7 @@
 package org.ECSDigital.EmmanuelOgiji;
 
-import com.google.gson.Gson;
-import org.json.*;
-import io.restassured.path.json.JsonPath;
-import org.apache.tomcat.util.json.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -51,14 +49,15 @@ public class Competitions extends HttpServlet {
             System.out.println(inline);
             sc.close();
         }
-        JsonPath jsonPath =  new JsonPath(inline);
+        JSONObject obj = new JSONObject(inline);
+        JSONArray CompetitionList = obj.getJSONArray("competitions");
         httpServletResponse.getWriter().println("<html>");
         httpServletResponse.getWriter().println("<head>");
         httpServletResponse.getWriter().println("<title>Competitions Available</title>");
         httpServletResponse.getWriter().println("</head>");
         httpServletResponse.getWriter().println("<body>");
-        for (int i=0; i<146; i++) {
-            httpServletResponse.getWriter().println(jsonPath.get("competitions[" + i + "].name").toString());
+        for (int i=0; i<CompetitionList.length(); i++) {
+            httpServletResponse.getWriter().println(CompetitionList.getJSONObject(i).getString("name"));
             httpServletResponse.getWriter().println("<br>");
         }
         httpServletResponse.getWriter().println("</body>");
