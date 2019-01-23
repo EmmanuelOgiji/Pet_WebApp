@@ -27,41 +27,31 @@ public class Competitions extends HttpServlet {
     }
 
     public void doGet (HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
-        String CompetitionURL = prop.getProperty("API_HOST")+Resources.getCompetitions();
-        HttpURLConnection connect;
-        URL url = new URL(CompetitionURL);
-        connect = (HttpURLConnection)url.openConnection();
-        connect.setRequestMethod("GET");
-        connect.setRequestProperty("X-Auth-Token",prop.getProperty("API_KEY"));
-        String inline="";
+        String IncomingData="";
 
+        URL url = ReusableMethods.constructURL(prop.getProperty("API_HOST"),Resources.getCompetitions());
+        HttpURLConnection connect = ReusableMethods.setupConnection("GET",url);
+        connect.setRequestProperty("X-Auth-Token",prop.getProperty("API_KEY"));
+        httpServletResponse.setContentType("text/html;charset=UTF-8");
+        PrintWriter output = httpServletResponse.getWriter();
         if (connect.getResponseCode() != 200) {
             System.out.println("HTTP GET Request Failed with Error code : "
                     + connect.getResponseCode());
         }
         else{
-            Scanner sc = new Scanner(url.openStream());
-            while(sc.hasNext())
-            {
-                inline+=sc.nextLine();
-            }
-            System.out.println("JSON data in string format");
-            System.out.println(inline);
-            sc.close();
+            IncomingData = ReusableMethods.readIncomingData(url);
         }
-        JSONObject obj = new JSONObject(inline);
-        JSONArray CompetitionList = obj.getJSONArray("competitions");
-        httpServletResponse.getWriter().println("<html>");
-        httpServletResponse.getWriter().println("<head>");
-        httpServletResponse.getWriter().println("<title>Competitions Available</title>");
-        httpServletResponse.getWriter().println("</head>");
-        httpServletResponse.getWriter().println("<body>");
+        JSONArray CompetitionList = ReusableMethods.parseJSONStringtoJSONArray(IncomingData,"competitions");
+        output.println("<html>");
+        output.println("<head>");
+        output.println("<title>Competitions Available</title>");
+        output.println("</head>");
+        output.println("<body>");
         for (int i=0; i<CompetitionList.length(); i++) {
-            httpServletResponse.getWriter().println(CompetitionList.getJSONObject(i).getString("name"));
-            httpServletResponse.getWriter().println("<br>");
+            output.println(CompetitionList.getJSONObject(i).getString("name"));
+            output.println("<br>");
         }
-        httpServletResponse.getWriter().println("</body>");
-        httpServletResponse.getWriter().println("</html>");
-
+        output.println("</body>");
+        output.println("</html>");
     }
 }
