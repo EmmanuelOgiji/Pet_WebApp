@@ -1,6 +1,8 @@
 package org.ECSDigital.EmmanuelOgiji;
 
 import org.json.JSONArray;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 
@@ -31,7 +35,7 @@ public class Competitions extends HttpServlet {
         HttpURLConnection connect = ReusableMethods.setupConnection("GET",url);
         connect.setRequestProperty("X-Auth-Token",prop.getProperty("API_KEY"));
         httpServletResponse.setContentType("text/html;charset=UTF-8");
-        PrintWriter output = httpServletResponse.getWriter();
+        List<String> Competitions = new ArrayList<>();
         if (connect.getResponseCode() != 200) {
             System.out.println("HTTP GET Request Failed with Error code : "
                     + connect.getResponseCode());
@@ -40,19 +44,14 @@ public class Competitions extends HttpServlet {
             IncomingData = ReusableMethods.readIncomingData(url);
         }
         JSONArray CompetitionList = ReusableMethods.parseJSONStringtoJSONArray(IncomingData,"competitions");
-        output.println("<html>");
-        output.println("<head>");
-        output.println("<title>Competitions Available</title>");
-        output.println("</head>");
-        output.println("<body>");
         for (int i=0; i<CompetitionList.length(); i++) {
             String tier = CompetitionList.getJSONObject(i).getString("plan");
             if(tier.equals("TIER_ONE")) {
-                output.println(CompetitionList.getJSONObject(i).getString("name"));
-                output.println("<br>");
+                Competitions.add(CompetitionList.getJSONObject(i).getString("name"));
             }
         }
-        output.println("</body>");
-        output.println("</html>");
+        httpServletRequest.setAttribute("CompetitionList",Competitions);
+        RequestDispatcher dispatcher = httpServletRequest.getServletContext().getRequestDispatcher("/competitions.jsp");
+        dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 }

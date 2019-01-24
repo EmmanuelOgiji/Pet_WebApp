@@ -5,11 +5,11 @@
   <display-name>Pet_WebAApp</display-name>
   <servlet>
     <servlet-name>HelloServlet</servlet-name>
-    <servlet-class>org.ECSDigital.EmmanuelOgiji.HelloServlet</servlet-class>
+    <servlet-class>org.ECSDigital.EmmanuelOgiji.Servlets.HelloServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Competitions</servlet-name>
-    <servlet-class>org.ECSDigital.EmmanuelOgiji.Competitions</servlet-class>
+    <servlet-class>org.ECSDigital.EmmanuelOgiji.Servlets.Competitions</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>

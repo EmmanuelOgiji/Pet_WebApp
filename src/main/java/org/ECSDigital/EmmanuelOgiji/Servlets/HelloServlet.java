@@ -1,4 +1,4 @@
-package org.ECSDigital.EmmanuelOgiji;
+package org.ECSDigital.EmmanuelOgiji.Servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
