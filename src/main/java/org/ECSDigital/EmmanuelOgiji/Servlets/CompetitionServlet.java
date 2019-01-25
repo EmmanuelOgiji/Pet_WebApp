@@ -1,6 +1,9 @@
-package org.ECSDigital.EmmanuelOgiji;
+package org.ECSDigital.EmmanuelOgiji.Servlets;
 
+import org.ECSDigital.EmmanuelOgiji.Resources;
+import org.ECSDigital.EmmanuelOgiji.ReusableMethods;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +18,7 @@ import java.util.List;
 import java.util.Properties;
 
 
-public class Competitions extends HttpServlet {
+public class CompetitionServlet extends HttpServlet {
     Properties prop = new Properties();
     {
         try {
@@ -31,26 +34,26 @@ public class Competitions extends HttpServlet {
     public void doGet (HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         String IncomingData="";
 
-        URL url = ReusableMethods.constructURL(prop.getProperty("API_HOST"),Resources.getCompetitions());
+        URL url = ReusableMethods.constructURL(prop.getProperty("API_HOST"), Resources.getCompetitions());
         HttpURLConnection connect = ReusableMethods.setupConnection("GET",url);
         connect.setRequestProperty("X-Auth-Token",prop.getProperty("API_KEY"));
-        httpServletResponse.setContentType("text/html;charset=UTF-8");
-        List<String> Competitions = new ArrayList<>();
+        List<JSONObject> FinalCompetitionList = new ArrayList<>();
         if (connect.getResponseCode() != 200) {
             System.out.println("HTTP GET Request Failed with Error code : "
                     + connect.getResponseCode());
         }
         else{
+
             IncomingData = ReusableMethods.readIncomingData(url);
         }
         JSONArray CompetitionList = ReusableMethods.parseJSONStringtoJSONArray(IncomingData,"competitions");
         for (int i=0; i<CompetitionList.length(); i++) {
             String tier = CompetitionList.getJSONObject(i).getString("plan");
             if(tier.equals("TIER_ONE")) {
-                Competitions.add(CompetitionList.getJSONObject(i).getString("name"));
+                FinalCompetitionList.add(CompetitionList.getJSONObject(i));
             }
         }
-        httpServletRequest.setAttribute("CompetitionList",Competitions);
+        httpServletRequest.setAttribute("CompetitionList",FinalCompetitionList);
         RequestDispatcher dispatcher = httpServletRequest.getServletContext().getRequestDispatcher("/competitions.jsp");
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }

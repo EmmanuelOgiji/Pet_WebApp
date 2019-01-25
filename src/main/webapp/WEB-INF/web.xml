@@ -9,7 +9,11 @@
   </servlet>
   <servlet>
     <servlet-name>Competitions</servlet-name>
-    <servlet-class>org.ECSDigital.EmmanuelOgiji.Servlets.Competitions</servlet-class>
+    <servlet-class>org.ECSDigital.EmmanuelOgiji.Servlets.CompetitionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Teams</servlet-name>
+    <servlet-class>org.ECSDigital.EmmanuelOgiji.Servlets.TeamServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>
@@ -18,5 +22,9 @@
   <servlet-mapping>
     <servlet-name>Competitions</servlet-name>
     <url-pattern>/Competitions</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Teams</servlet-name>
+    <url-pattern>/Teams</url-pattern>
   </servlet-mapping>
 </web-app>

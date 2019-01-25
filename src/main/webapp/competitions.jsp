@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@page import="org.json.JSONObject"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -17,8 +19,8 @@
            </tr>
            <c:forEach items="${CompetitionList}" var="item" >
               <tr>
-                 <td>${item}</td>
-                 </td>
+                 <% String id = ${item.getString("id"); %>
+                 <td><a href="Teams?CompID=<%=id%>">${item.getString("name")}</a></td>
               </tr>
            </c:forEach>
         </table>

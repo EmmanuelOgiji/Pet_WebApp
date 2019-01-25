@@ -1,4 +1,5 @@
+org/ECSDigital/EmmanuelOgiji/Servlets/HelloServlet.class
 org/ECSDigital/EmmanuelOgiji/Resources.class
 org/ECSDigital/EmmanuelOgiji/ReusableMethods.class
-org/ECSDigital/EmmanuelOgiji/Competitions.class
-org/ECSDigital/EmmanuelOgiji/HelloServlet.class
+org/ECSDigital/EmmanuelOgiji/Servlets/CompetitionServlet.class
+org/ECSDigital/EmmanuelOgiji/Servlets/TeamServlet.class
