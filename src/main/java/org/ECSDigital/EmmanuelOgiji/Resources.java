@@ -3,7 +3,416 @@ package org.ECSDigital.EmmanuelOgiji;
 public class Resources {
     public static  String getCompetitions(){ return "/competitions"; }
     public static  String getTeams(String compId){ return "/competitions/"+compId+"/teams"; }
-    public static String backup(){
+    public static String getTeamProfile(String teamID) {
+        return "/teams/"+teamID;
+    }
+    public static String TeamsBackup() {
+        return "{\n" +
+                "    \"count\": 20,\n" +
+                "    \"filters\": {},\n" +
+                "    \"competition\": {\n" +
+                "        \"id\": 2021,\n" +
+                "        \"area\": {\n" +
+                "            \"id\": 2072,\n" +
+                "            \"name\": \"England\"\n" +
+                "        },\n" +
+                "        \"name\": \"Premier League\",\n" +
+                "        \"code\": \"PL\",\n" +
+                "        \"plan\": \"TIER_ONE\",\n" +
+                "        \"lastUpdated\": \"2019-01-21T12:45:04Z\"\n" +
+                "    },\n" +
+                "    \"season\": {\n" +
+                "        \"id\": 151,\n" +
+                "        \"startDate\": \"2018-08-10\",\n" +
+                "        \"endDate\": \"2019-05-12\",\n" +
+                "        \"currentMatchday\": 24,\n" +
+                "        \"winner\": null\n" +
+                "    },\n" +
+                "    \"teams\": [\n" +
+                "        {\n" +
+                "            \"id\": 57,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Arsenal FC\",\n" +
+                "            \"shortName\": \"Arsenal\",\n" +
+                "            \"tla\": \"ARS\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg\",\n" +
+                "            \"address\": \"75 Drayton Park London N5 1BU\",\n" +
+                "            \"phone\": \"+44 (020) 76195003\",\n" +
+                "            \"website\": \"http://www.arsenal.com\",\n" +
+                "            \"email\": \"info@arsenal.co.uk\",\n" +
+                "            \"founded\": 1886,\n" +
+                "            \"clubColors\": \"Red / White\",\n" +
+                "            \"venue\": \"Emirates Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:14Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 61,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Chelsea FC\",\n" +
+                "            \"shortName\": \"Chelsea\",\n" +
+                "            \"tla\": \"CFC\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/5/5c/Chelsea_crest.svg\",\n" +
+                "            \"address\": \"Fulham Road London SW6 1HS\",\n" +
+                "            \"phone\": \"+44 (0871) 9841955\",\n" +
+                "            \"website\": \"http://www.chelseafc.com\",\n" +
+                "            \"email\": null,\n" +
+                "            \"founded\": 1905,\n" +
+                "            \"clubColors\": \"Royal Blue / White\",\n" +
+                "            \"venue\": \"Stamford Bridge\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:16Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 62,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Everton FC\",\n" +
+                "            \"shortName\": \"Everton\",\n" +
+                "            \"tla\": \"EVE\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/f/f9/Everton_FC.svg\",\n" +
+                "            \"address\": \"Goodison Park Liverpool L4 4EL\",\n" +
+                "            \"phone\": \"+44 (0871) 6631878\",\n" +
+                "            \"website\": \"http://www.evertonfc.com\",\n" +
+                "            \"email\": \"everton@evertonfc.com\",\n" +
+                "            \"founded\": 1878,\n" +
+                "            \"clubColors\": \"Blue / White\",\n" +
+                "            \"venue\": \"Goodison Park\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:17Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 63,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Fulham FC\",\n" +
+                "            \"shortName\": \"Fulham\",\n" +
+                "            \"tla\": \"FUL\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/a/a8/Fulham_fc.svg\",\n" +
+                "            \"address\": \"Craven Cottage, Stevenage Road London SW6 6HH\",\n" +
+                "            \"phone\": \"+44 (0870) 4421222\",\n" +
+                "            \"website\": \"http://www.fulhamfc.com\",\n" +
+                "            \"email\": \"enquiries@fulhamfc.com\",\n" +
+                "            \"founded\": 1879,\n" +
+                "            \"clubColors\": \"White / Black\",\n" +
+                "            \"venue\": \"Craven Cottage\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:17Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 64,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Liverpool FC\",\n" +
+                "            \"shortName\": \"Liverpool\",\n" +
+                "            \"tla\": \"LIV\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/0/0a/FC_Liverpool.svg\",\n" +
+                "            \"address\": \"Anfield Road Liverpool L4 OTH\",\n" +
+                "            \"phone\": \"+44 (0844) 4993000\",\n" +
+                "            \"website\": \"http://www.liverpoolfc.tv\",\n" +
+                "            \"email\": \"customercontact@liverpoolfc.tv\",\n" +
+                "            \"founded\": 1892,\n" +
+                "            \"clubColors\": \"Red / White\",\n" +
+                "            \"venue\": \"Anfield\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:18Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 65,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Manchester City FC\",\n" +
+                "            \"shortName\": \"Man City\",\n" +
+                "            \"tla\": \"MNC\",\n" +
+                "            \"crestUrl\": \"https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg\",\n" +
+                "            \"address\": \"SportCity Manchester M11 3FF\",\n" +
+                "            \"phone\": \"+44 (0870) 0621894\",\n" +
+                "            \"website\": \"https://www.mancity.com\",\n" +
+                "            \"email\": \"mancity@mancity.com\",\n" +
+                "            \"founded\": 1880,\n" +
+                "            \"clubColors\": \"Sky Blue / White\",\n" +
+                "            \"venue\": \"Etihad Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:18Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 66,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Manchester United FC\",\n" +
+                "            \"shortName\": \"Man United\",\n" +
+                "            \"tla\": \"MNU\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/d/da/Manchester_United_FC.svg\",\n" +
+                "            \"address\": \"Sir Matt Busby Way Manchester M16 0RA\",\n" +
+                "            \"phone\": \"+44 (0161) 8688000\",\n" +
+                "            \"website\": \"http://www.manutd.com\",\n" +
+                "            \"email\": \"enquiries@manutd.co.uk\",\n" +
+                "            \"founded\": 1878,\n" +
+                "            \"clubColors\": \"Red / White\",\n" +
+                "            \"venue\": \"Old Trafford\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:19Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 67,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Newcastle United FC\",\n" +
+                "            \"shortName\": \"Newcastle\",\n" +
+                "            \"tla\": \"NEW\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/5/56/Newcastle_United_Logo.svg\",\n" +
+                "            \"address\": \"Sports Direct Arena Newcastle upon Tyne NE1 4ST\",\n" +
+                "            \"phone\": null,\n" +
+                "            \"website\": \"http://www.nufc.co.uk\",\n" +
+                "            \"email\": \"admin@nufc.co.uk\",\n" +
+                "            \"founded\": 1881,\n" +
+                "            \"clubColors\": \"Black / White\",\n" +
+                "            \"venue\": \"St. James' Park\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:19Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 73,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Tottenham Hotspur FC\",\n" +
+                "            \"shortName\": \"Tottenham\",\n" +
+                "            \"tla\": \"TOT\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/b/b4/Tottenham_Hotspur.svg\",\n" +
+                "            \"address\": \"Bill Nicholson Way, 748 High Road London N17 OAP\",\n" +
+                "            \"phone\": \"+44 (0844) 4995000\",\n" +
+                "            \"website\": \"http://www.tottenhamhotspur.com\",\n" +
+                "            \"email\": \"customer.care@tottenhamhotspur.com\",\n" +
+                "            \"founded\": 1882,\n" +
+                "            \"clubColors\": \"Navy Blue / White\",\n" +
+                "            \"venue\": \"Wembley Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:21Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 76,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Wolverhampton Wanderers FC\",\n" +
+                "            \"shortName\": \"Wolverhampton\",\n" +
+                "            \"tla\": \"WOL\",\n" +
+                "            \"crestUrl\": \"https://upload.wikimedia.org/wikipedia/en/f/fc/Wolverhampton_Wanderers.svg\",\n" +
+                "            \"address\": \"Waterloo Road Wolverhampton WV1 4QR\",\n" +
+                "            \"phone\": \"+44 (0871) 2222220\",\n" +
+                "            \"website\": \"http://www.wolves.co.uk\",\n" +
+                "            \"email\": \"info@wolves.co.uk\",\n" +
+                "            \"founded\": 1877,\n" +
+                "            \"clubColors\": \"Black / Gold\",\n" +
+                "            \"venue\": \"Molineux Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:23Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 328,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Burnley FC\",\n" +
+                "            \"shortName\": \"Burnley\",\n" +
+                "            \"tla\": \"BUR\",\n" +
+                "            \"crestUrl\": \"https://upload.wikimedia.org/wikipedia/en/0/02/Burnley_FC_badge.png\",\n" +
+                "            \"address\": \"Harry Potts Way Burnley BB10 4BX\",\n" +
+                "            \"phone\": \"+44 (0871) 2211882\",\n" +
+                "            \"website\": \"http://www.burnleyfootballclub.com\",\n" +
+                "            \"email\": \"info@burnleyfc.com\",\n" +
+                "            \"founded\": 1881,\n" +
+                "            \"clubColors\": \"Claret / Sky Blue\",\n" +
+                "            \"venue\": \"Turf Moor\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:44Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 338,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Leicester City FC\",\n" +
+                "            \"shortName\": \"Leicester City\",\n" +
+                "            \"tla\": \"LEI\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/en/6/63/Leicester02.png\",\n" +
+                "            \"address\": \"The Walkers Stadium, Filbert Way Leicester LE2 7FL\",\n" +
+                "            \"phone\": \"+44 (0844) 8156000\",\n" +
+                "            \"website\": \"http://www.lcfc.com\",\n" +
+                "            \"email\": null,\n" +
+                "            \"founded\": 1884,\n" +
+                "            \"clubColors\": \"Royal Blue / White\",\n" +
+                "            \"venue\": \"King Power Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:46Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 340,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Southampton FC\",\n" +
+                "            \"shortName\": \"Southampton\",\n" +
+                "            \"tla\": \"SOT\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/c/c9/FC_Southampton.svg\",\n" +
+                "            \"address\": \"Britannia Road Southampton SO14 5FP\",\n" +
+                "            \"phone\": null,\n" +
+                "            \"website\": \"http://www.saintsfc.co.uk\",\n" +
+                "            \"email\": \"sfc@saintsfc.co.uk\",\n" +
+                "            \"founded\": 1885,\n" +
+                "            \"clubColors\": \"Red / White / Black\",\n" +
+                "            \"venue\": \"St. Mary's Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:46Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 346,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Watford FC\",\n" +
+                "            \"shortName\": \"Watford\",\n" +
+                "            \"tla\": \"WAT\",\n" +
+                "            \"crestUrl\": \"https://upload.wikimedia.org/wikipedia/en/e/e2/Watford.svg\",\n" +
+                "            \"address\": \"Vicarage Road Watford WD18 0ER\",\n" +
+                "            \"phone\": null,\n" +
+                "            \"website\": \"http://www.watfordfc.com\",\n" +
+                "            \"email\": \"yourvoice@watfordfc.com\",\n" +
+                "            \"founded\": 1881,\n" +
+                "            \"clubColors\": \"Yellow / Black\",\n" +
+                "            \"venue\": \"Vicarage Road Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:48Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 354,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Crystal Palace FC\",\n" +
+                "            \"shortName\": \"Crystal Palace\",\n" +
+                "            \"tla\": \"CRY\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/b/bf/Crystal_Palace_F.C._logo_%282013%29.png\",\n" +
+                "            \"address\": \"Whitehorse Lane London SE25 6PU\",\n" +
+                "            \"phone\": \"+44 (020) 87686000\",\n" +
+                "            \"website\": \"http://www.cpfc.co.uk\",\n" +
+                "            \"email\": \"info@cpfc.co.uk\",\n" +
+                "            \"founded\": 1905,\n" +
+                "            \"clubColors\": \"Red / Blue\",\n" +
+                "            \"venue\": \"Selhurst Park\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:50Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 394,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Huddersfield Town AFC\",\n" +
+                "            \"shortName\": \"Huddersfield\",\n" +
+                "            \"tla\": \"HUD\",\n" +
+                "            \"crestUrl\": \"https://upload.wikimedia.org/wikipedia/en/5/5a/Huddersfield_Town_A.F.C._logo.svg\",\n" +
+                "            \"address\": \"Stadium Way Huddersfield HD1 6PX\",\n" +
+                "            \"phone\": \"+44 (0148) 4484112\",\n" +
+                "            \"website\": \"http://www.htafc.com\",\n" +
+                "            \"email\": \"info@htafc.com\",\n" +
+                "            \"founded\": 1908,\n" +
+                "            \"clubColors\": \"Blue / White\",\n" +
+                "            \"venue\": \"The John Smith's Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:54Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 397,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Brighton & Hove Albion FC\",\n" +
+                "            \"shortName\": \"Brighton Hove\",\n" +
+                "            \"tla\": \"BHA\",\n" +
+                "            \"crestUrl\": \"https://upload.wikimedia.org/wikipedia/en/f/fd/Brighton_%26_Hove_Albion_logo.svg\",\n" +
+                "            \"address\": \"44 North Road Brighton & Hove BN1 1YR\",\n" +
+                "            \"phone\": \"+44 (01273) 878288\",\n" +
+                "            \"website\": \"http://www.seagulls.co.uk\",\n" +
+                "            \"email\": \"seagulls@bhafc.co.uk\",\n" +
+                "            \"founded\": 1898,\n" +
+                "            \"clubColors\": \"Blue / White\",\n" +
+                "            \"venue\": \"The American Express Community Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:08:54Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 563,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"West Ham United FC\",\n" +
+                "            \"shortName\": \"West Ham\",\n" +
+                "            \"tla\": \"WHU\",\n" +
+                "            \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/de/e/e0/West_Ham_United_FC.svg\",\n" +
+                "            \"address\": \"Green Street, Upton Park London E13 9AZ\",\n" +
+                "            \"phone\": \"+44 (020) 85482794\",\n" +
+                "            \"website\": \"http://www.whufc.com\",\n" +
+                "            \"email\": \"yourcomments@westhamunited.co.uk\",\n" +
+                "            \"founded\": 1895,\n" +
+                "            \"clubColors\": \"Claret / Sky Blue\",\n" +
+                "            \"venue\": \"London Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:09:16Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 715,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2264,\n" +
+                "                \"name\": \"Wales\"\n" +
+                "            },\n" +
+                "            \"name\": \"Cardiff City FC\",\n" +
+                "            \"shortName\": \"Cardiff\",\n" +
+                "            \"tla\": \"CAR\",\n" +
+                "            \"crestUrl\": \"https://upload.wikimedia.org/wikipedia/en/3/3c/Cardiff_City_crest.svg\",\n" +
+                "            \"address\": \"Cardiff City Stadium, Leckwith Road Cardiff CF11 8AZ\",\n" +
+                "            \"phone\": \"+44 (0845) 3651115\",\n" +
+                "            \"website\": \"http://www.cardiffcityfc.co.uk\",\n" +
+                "            \"email\": \"club@cardiffcityfc.co.uk\",\n" +
+                "            \"founded\": 1899,\n" +
+                "            \"clubColors\": \"Blue / White\",\n" +
+                "            \"venue\": \"Cardiff City Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:09:32Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 1044,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"AFC Bournemouth\",\n" +
+                "            \"shortName\": \"Bournemouth\",\n" +
+                "            \"tla\": \"BOR\",\n" +
+                "            \"crestUrl\": \"https://upload.wikimedia.org/wikipedia/de/4/41/Afc_bournemouth.svg\",\n" +
+                "            \"address\": \"Dean Court, Kings Park Bournemouth BH7 7AF\",\n" +
+                "            \"phone\": \"+44 (01202) 726300\",\n" +
+                "            \"website\": \"http://www.afcb.co.uk\",\n" +
+                "            \"email\": \"admin@afcb.co.uk\",\n" +
+                "            \"founded\": 1890,\n" +
+                "            \"clubColors\": \"Red / Black\",\n" +
+                "            \"venue\": \"Vitality Stadium\",\n" +
+                "            \"lastUpdated\": \"2018-10-15T15:09:47Z\"\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+    }
+    public static String CompetitionsBackup(){
         return "{\n" +
                 "    \"count\": 147,\n" +
                 "    \"filters\": {},\n" +
@@ -906,5 +1315,374 @@ public class Resources {
                 "            \"numberOfAvailableSeasons\": 10,\n" +
                 "            \"lastUpdated\": \"2019-01-23T12:10:02Z\"\n" +
                 "        }]}";
+    }
+
+
+    public static String TeamProfileBackup() {
+        return "{\n" +
+                "    \"id\": 57,\n" +
+                "    \"area\": {\n" +
+                "        \"id\": 2072,\n" +
+                "        \"name\": \"England\"\n" +
+                "    },\n" +
+                "    \"activeCompetitions\": [\n" +
+                "        {\n" +
+                "            \"id\": 2021,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2072,\n" +
+                "                \"name\": \"England\"\n" +
+                "            },\n" +
+                "            \"name\": \"Premier League\",\n" +
+                "            \"code\": \"PL\",\n" +
+                "            \"plan\": \"TIER_ONE\",\n" +
+                "            \"lastUpdated\": \"2019-01-21T12:45:04Z\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 2146,\n" +
+                "            \"area\": {\n" +
+                "                \"id\": 2077,\n" +
+                "                \"name\": \"Europe\"\n" +
+                "            },\n" +
+                "            \"name\": \"UEFA Europa League\",\n" +
+                "            \"code\": \"EL\",\n" +
+                "            \"plan\": \"TIER_TWO\",\n" +
+                "            \"lastUpdated\": \"2018-12-14T22:45:01Z\"\n" +
+                "        }\n" +
+                "    ],\n" +
+                "    \"name\": \"Arsenal FC\",\n" +
+                "    \"shortName\": \"Arsenal\",\n" +
+                "    \"tla\": \"ARS\",\n" +
+                "    \"crestUrl\": \"http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg\",\n" +
+                "    \"address\": \"75 Drayton Park London N5 1BU\",\n" +
+                "    \"phone\": \"+44 (020) 76195003\",\n" +
+                "    \"website\": \"http://www.arsenal.com\",\n" +
+                "    \"email\": \"info@arsenal.co.uk\",\n" +
+                "    \"founded\": 1886,\n" +
+                "    \"clubColors\": \"Red / White\",\n" +
+                "    \"venue\": \"Emirates Stadium\",\n" +
+                "    \"squad\": [\n" +
+                "        {\n" +
+                "            \"id\": 3141,\n" +
+                "            \"name\": \"Emiliano Martínez\",\n" +
+                "            \"position\": \"Goalkeeper\",\n" +
+                "            \"dateOfBirth\": \"1992-09-02T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Argentina\",\n" +
+                "            \"nationality\": \"Argentina\",\n" +
+                "            \"shirtNumber\": 26,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 3174,\n" +
+                "            \"name\": \"Bernd Leno\",\n" +
+                "            \"position\": \"Goalkeeper\",\n" +
+                "            \"dateOfBirth\": \"1992-03-04T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Germany\",\n" +
+                "            \"nationality\": \"Germany\",\n" +
+                "            \"shirtNumber\": 19,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7778,\n" +
+                "            \"name\": \"Petr Čech\",\n" +
+                "            \"position\": \"Goalkeeper\",\n" +
+                "            \"dateOfBirth\": \"1982-05-20T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Czech Republic\",\n" +
+                "            \"nationality\": \"Czech Republic\",\n" +
+                "            \"shirtNumber\": 1,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 137,\n" +
+                "            \"name\": \"Sokratis Papastathopoulos\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1988-06-09T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Greece\",\n" +
+                "            \"nationality\": \"Greece\",\n" +
+                "            \"shirtNumber\": 5,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 2026,\n" +
+                "            \"name\": \"Stephan Lichtsteiner\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1984-01-16T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Switzerland\",\n" +
+                "            \"nationality\": \"Switzerland\",\n" +
+                "            \"shirtNumber\": 12,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 3358,\n" +
+                "            \"name\": \"Laurent Koscielny\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1985-09-10T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"France\",\n" +
+                "            \"nationality\": \"France\",\n" +
+                "            \"shirtNumber\": null,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 4112,\n" +
+                "            \"name\": \"Carl Jenkinson\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1992-02-08T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": null,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7782,\n" +
+                "            \"name\": \"Nacho Monreal\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1986-02-26T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Spain\",\n" +
+                "            \"nationality\": \"Spain\",\n" +
+                "            \"shirtNumber\": 18,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7783,\n" +
+                "            \"name\": \"Héctor Bellerín\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1995-03-19T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Spain\",\n" +
+                "            \"nationality\": \"Spain\",\n" +
+                "            \"shirtNumber\": 2,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7784,\n" +
+                "            \"name\": \"Rob Holding\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1995-09-20T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": 16,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7785,\n" +
+                "            \"name\": \"Shkodran Mustafi\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1992-04-17T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Germany\",\n" +
+                "            \"nationality\": \"Germany\",\n" +
+                "            \"shirtNumber\": 20,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7786,\n" +
+                "            \"name\": \"Sead Kolašinac\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1993-06-20T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Germany\",\n" +
+                "            \"nationality\": \"Bosnia and Herzegovina\",\n" +
+                "            \"shirtNumber\": 31,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7789,\n" +
+                "            \"name\": \"Konstantinos Mavropanos\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1997-12-11T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Greece\",\n" +
+                "            \"nationality\": \"Greece\",\n" +
+                "            \"shirtNumber\": null,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 33800,\n" +
+                "            \"name\": \"Julio Pleguezuelo\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"1997-01-26T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Spain\",\n" +
+                "            \"nationality\": \"Spain\",\n" +
+                "            \"shirtNumber\": null,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 98411,\n" +
+                "            \"name\": \"Zechariah Medley\",\n" +
+                "            \"position\": \"Defender\",\n" +
+                "            \"dateOfBirth\": \"2000-07-07T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": 47,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 600,\n" +
+                "            \"name\": \"Mattéo Guendouzi\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1999-04-14T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"France\",\n" +
+                "            \"nationality\": \"France\",\n" +
+                "            \"shirtNumber\": 29,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 2260,\n" +
+                "            \"name\": \"Lucas Torreira\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1996-02-11T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Uruguay\",\n" +
+                "            \"nationality\": \"Uruguay\",\n" +
+                "            \"shirtNumber\": 11,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 3180,\n" +
+                "            \"name\": \"Mesut Özil\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1988-10-15T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Germany\",\n" +
+                "            \"nationality\": \"Germany\",\n" +
+                "            \"shirtNumber\": 10,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 3392,\n" +
+                "            \"name\": \"Alex Iwobi\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1996-05-03T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Nigeria\",\n" +
+                "            \"nationality\": \"Nigeria\",\n" +
+                "            \"shirtNumber\": 17,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 3477,\n" +
+                "            \"name\": \"Granit Xhaka\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1992-09-27T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Switzerland\",\n" +
+                "            \"nationality\": \"Switzerland\",\n" +
+                "            \"shirtNumber\": 34,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 3755,\n" +
+                "            \"name\": \"Mohamed El Neny\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1992-07-11T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Egypt\",\n" +
+                "            \"nationality\": \"Egypt\",\n" +
+                "            \"shirtNumber\": 4,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7791,\n" +
+                "            \"name\": \"Aaron Ramsey\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1990-12-26T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Wales\",\n" +
+                "            \"nationality\": \"Wales\",\n" +
+                "            \"shirtNumber\": 8,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7792,\n" +
+                "            \"name\": \"Ainsley Maitland-Niles\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1997-08-29T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": 15,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7795,\n" +
+                "            \"name\": \"Henrikh Mkhitaryan\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"1989-01-21T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Armenia\",\n" +
+                "            \"nationality\": \"Armenia\",\n" +
+                "            \"shirtNumber\": 7,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 85570,\n" +
+                "            \"name\": \"Emile Smith-Rowe\",\n" +
+                "            \"position\": \"Midfielder\",\n" +
+                "            \"dateOfBirth\": \"2000-07-28T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": 55,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 3328,\n" +
+                "            \"name\": \"Danny Welbeck\",\n" +
+                "            \"position\": \"Attacker\",\n" +
+                "            \"dateOfBirth\": \"1990-11-26T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": 23,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7797,\n" +
+                "            \"name\": \"Alexandre Lacazette\",\n" +
+                "            \"position\": \"Attacker\",\n" +
+                "            \"dateOfBirth\": \"1991-05-28T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"France\",\n" +
+                "            \"nationality\": \"France\",\n" +
+                "            \"shirtNumber\": 9,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7798,\n" +
+                "            \"name\": \"Joe Willock\",\n" +
+                "            \"position\": \"Attacker\",\n" +
+                "            \"dateOfBirth\": \"1999-08-20T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": null,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7800,\n" +
+                "            \"name\": \"Eddie Nketiah\",\n" +
+                "            \"position\": \"Attacker\",\n" +
+                "            \"dateOfBirth\": \"1999-05-30T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": 49,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 7801,\n" +
+                "            \"name\": \"Pierre-Emerick Aubameyang\",\n" +
+                "            \"position\": \"Attacker\",\n" +
+                "            \"dateOfBirth\": \"1989-06-18T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"France\",\n" +
+                "            \"nationality\": \"Gabon\",\n" +
+                "            \"shirtNumber\": 14,\n" +
+                "            \"role\": \"PLAYER\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 11616,\n" +
+                "            \"name\": \"Unai Emery\",\n" +
+                "            \"position\": null,\n" +
+                "            \"dateOfBirth\": \"1971-11-03T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"Spain\",\n" +
+                "            \"nationality\": \"Spain\",\n" +
+                "            \"shirtNumber\": null,\n" +
+                "            \"role\": \"COACH\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 11617,\n" +
+                "            \"name\": \"Steve Bould\",\n" +
+                "            \"position\": null,\n" +
+                "            \"dateOfBirth\": \"1962-11-16T00:00:00Z\",\n" +
+                "            \"countryOfBirth\": \"England\",\n" +
+                "            \"nationality\": \"England\",\n" +
+                "            \"shirtNumber\": null,\n" +
+                "            \"role\": \"ASSISTANT_COACH\"\n" +
+                "        }\n" +
+                "    ],\n" +
+                "    \"lastUpdated\": \"2018-10-15T15:08:14Z\"\n" +
+                "}";
     }
 }

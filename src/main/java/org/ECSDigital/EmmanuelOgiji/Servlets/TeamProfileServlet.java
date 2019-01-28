@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Properties;
 
 
-public class CompetitionServlet extends HttpServlet {
+public class TeamProfileServlet extends HttpServlet {
     Properties prop = new Properties();
     {
         try {
@@ -33,30 +33,27 @@ public class CompetitionServlet extends HttpServlet {
 
     public void doGet (HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
         String IncomingData="";
-
-        URL url = ReusableMethods.constructURL(prop.getProperty("API_HOST"), Resources.getCompetitions());
+        URL url = ReusableMethods.constructURL(prop.getProperty("API_HOST"), Resources.getTeamProfile(httpServletRequest.getParameter("TeamID")));
         HttpURLConnection connect = ReusableMethods.setupConnection("GET",url);
         connect.setRequestProperty("X-Auth-Token",prop.getProperty("API_KEY"));
-        List<JSONObject> FinalCompetitionList = new ArrayList<>();
+        List<JSONObject> TeamList= new ArrayList<>();
         if (connect.getResponseCode() != 200) {
             System.out.println("HTTP GET Request Failed with Error code : "
                     + connect.getResponseCode());
         }
         else{
-
             IncomingData = ReusableMethods.readIncomingData(url);
         }
-        JSONArray CompetitionList = ReusableMethods.parseJSONStringtoJSONArray(IncomingData,"competitions");
-        //JSONArray CompetitionList = ReusableMethods.parseJSONStringtoJSONArray(Resources.CompetitionsBackup(),"competitions");
-        for (int i=0; i<CompetitionList.length(); i++) {
-            String tier = CompetitionList.getJSONObject(i).getString("plan");
-            if(tier.equals("TIER_ONE")) {
-                FinalCompetitionList.add(CompetitionList.getJSONObject(i));
-            }
-        }
 
-        httpServletRequest.setAttribute("CompetitionList",FinalCompetitionList);
-        RequestDispatcher dispatcher = httpServletRequest.getServletContext().getRequestDispatcher("/competitions.jsp");
+        JSONObject TeamProfile = ReusableMethods.parseJSONStringtoJSONObject(IncomingData);
+        //JSONObject TeamProfile = ReusableMethods.parseJSONStringtoJSONObject(Resources.TeamProfileBackup());
+        JSONArray Squad = TeamProfile.getJSONArray("squad");
+        for (int i=0; i<Squad.length(); i++) {
+            TeamList.add((JSONObject) Squad.get(i));
+        }
+        httpServletRequest.setAttribute("TeamProfile",TeamProfile);
+        httpServletRequest.setAttribute("Squad",TeamList);
+        RequestDispatcher dispatcher = httpServletRequest.getServletContext().getRequestDispatcher("/teamprofile.jsp");
         dispatcher.forward(httpServletRequest, httpServletResponse);
     }
 }

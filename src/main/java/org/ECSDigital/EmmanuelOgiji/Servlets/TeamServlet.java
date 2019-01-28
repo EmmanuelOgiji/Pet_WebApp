@@ -3,6 +3,7 @@ package org.ECSDigital.EmmanuelOgiji.Servlets;
 import org.ECSDigital.EmmanuelOgiji.Resources;
 import org.ECSDigital.EmmanuelOgiji.ReusableMethods;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,7 +36,7 @@ public class TeamServlet extends HttpServlet {
         URL url = ReusableMethods.constructURL(prop.getProperty("API_HOST"), Resources.getTeams(httpServletRequest.getParameter("CompID")));
         HttpURLConnection connect = ReusableMethods.setupConnection("GET",url);
         connect.setRequestProperty("X-Auth-Token",prop.getProperty("API_KEY"));
-        List<String> Teams = new ArrayList<>();
+        List<JSONObject> Teams = new ArrayList<>();
         if (connect.getResponseCode() != 200) {
             System.out.println("HTTP GET Request Failed with Error code : "
                     + connect.getResponseCode());
@@ -43,14 +44,13 @@ public class TeamServlet extends HttpServlet {
         else{
             IncomingData = ReusableMethods.readIncomingData(url);
         }
+        System.out.println(IncomingData);
         JSONArray TeamList = ReusableMethods.parseJSONStringtoJSONArray(IncomingData,"teams");
+        //JSONArray TeamList = ReusableMethods.parseJSONStringtoJSONArray(Resources.TeamsBackup(),"teams");
         for (int i=0; i<TeamList.length(); i++) {
-                Teams.add(TeamList.getJSONObject(i).getString("name"));
+                Teams.add(TeamList.getJSONObject(i));
         }
-//        List<String> Teams = new ArrayList<>();
-//        Teams.add("Dundee");
-//        Teams.add("Warri Wolves");
-//        Teams.add(url.toString());
+
         httpServletRequest.setAttribute("TeamList",Teams);
         RequestDispatcher dispatcher = httpServletRequest.getServletContext().getRequestDispatcher("/teams.jsp");
         dispatcher.forward(httpServletRequest, httpServletResponse);

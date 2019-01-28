@@ -19,8 +19,7 @@
            </tr>
            <c:forEach items="${CompetitionList}" var="item" >
               <tr>
-                 <% String id = ${item.getString("id"); %>
-                 <td><a href="Teams?CompID=<%=id%>">${item.getString("name")}</a></td>
+                 <td><a href="Teams?CompID=${item.get("id")}">${item.getString("name")}</a></td>
               </tr>
            </c:forEach>
         </table>

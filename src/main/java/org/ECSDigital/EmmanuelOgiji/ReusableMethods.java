@@ -56,4 +56,9 @@ public class ReusableMethods {
         JSONArray Array = obj.getJSONArray(key);
         return Array;
     }
+
+    public static JSONObject parseJSONStringtoJSONObject(String JSONString) {
+        JSONObject obj = new JSONObject(JSONString);
+        return obj;
+    }
 }

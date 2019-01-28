@@ -3,3 +3,4 @@ org/ECSDigital/EmmanuelOgiji/Resources.class
 org/ECSDigital/EmmanuelOgiji/ReusableMethods.class
 org/ECSDigital/EmmanuelOgiji/Servlets/CompetitionServlet.class
 org/ECSDigital/EmmanuelOgiji/Servlets/TeamServlet.class
+org/ECSDigital/EmmanuelOgiji/Servlets/TeamProfileServlet.class

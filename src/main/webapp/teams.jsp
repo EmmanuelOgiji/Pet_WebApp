@@ -10,15 +10,14 @@
  </div>
  <body>
 
-    <h3>Competitions List</h3>
+    <h3>Teams in Competition</h3>
         <table align="centre" border="1" cellpadding="5" cellspacing="1" >
            <tr>
-              <th>Teams in Competition</th>
+              <th>Team name</th>
            </tr>
            <c:forEach items="${TeamList}" var="item" >
               <tr>
-                 <td>${item}</td>
-                 </td>
+                 <td><a href="Profiles?TeamID=${item.get("id")}">${item.getString("name")}</a></td>
               </tr>
            </c:forEach>
         </table>
